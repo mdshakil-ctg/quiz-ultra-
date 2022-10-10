@@ -8,11 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const QuizDetails = ({quiz, idx}) => {
     console.log(quiz)
     const [answer, setAnswer] =useState(false);
+    const [number, setNumber] = useState(idx);
+    console.log(number);
     const showAnswer = () =>{
         setAnswer(true);
     }
     const demo = (event) =>{
         console.log(event.target.value)
+        setNumber(number + 1);
         const choosenAnswer = event.target.value;
         if(choosenAnswer === correctAnswer){
             toast('Correct answer');
@@ -24,7 +27,7 @@ const QuizDetails = ({quiz, idx}) => {
 
    
     
-    const {options, question, correctAnswer } = quiz;
+    const {options, question, correctAnswer} = quiz;
     return (
         <div className='bg-orange-300 m-6 p-6 rounded-md'>
             <div className='flex justify-between'>
@@ -42,11 +45,11 @@ const QuizDetails = ({quiz, idx}) => {
                 }
             </div>
 
-            <div className='text-start ' onClick={demo}>
+            <div className='text-start ' >
                 {
-                    options.map((option, idx) => <div>
-                        <input type='radio'  name='javascript' value={option}></input>
-               <label  className='ml-2 hover:bg-amber-700 w-full rounded'>{option}</label><br></br>
+                    options.map((option, idx) => <div key={idx}>
+                        <input onChange={demo} type='radio' id={option} name='javascript' value={option}></input>
+               <label for={option} className='ml-2 hover:bg-amber-700 w-full rounded'>{option}</label><br></br>
                     </div>)
                 }
             </div>
