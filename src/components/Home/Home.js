@@ -5,7 +5,7 @@ import './Home.css'
 
 const Home = () => {
   const quizData = useLoaderData();
-  console.log(quizData);
+ 
   return (
     <div>
       <div className="home-header p-36 ">

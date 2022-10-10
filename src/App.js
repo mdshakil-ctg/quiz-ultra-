@@ -3,6 +3,7 @@ import './App.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Main from './layout/Main';
 import Home from './components/Home/Home';
+import CartDetails from './components/CartDetails/CartDetails';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,11 @@ function App() {
           path: '/',
           loader: async() => fetch('https://openapi.programming-hero.com/api/quiz'),
           element: <Home></Home>
+        },
+        {
+          path:'/quiz/:cartId',
+          loader: async({params}) => fetch(`https://openapi.programming-hero.com/api/quiz/${params.cartId}`),
+          element: <CartDetails></CartDetails>
         }
       ]
     }
