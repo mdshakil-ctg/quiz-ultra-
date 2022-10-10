@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { EyeIcon } from '@heroicons/react/24/solid'
 
 const QuizDetails = ({quiz, idx}) => {
     console.log(quiz)
+    const [answer, setAnswer] =useState(false);
+    const showAnswer = () =>{
+        setAnswer(true);
+    }
     const {options, question, correctAnswer } = quiz;
     return (
         <div className='bg-orange-300 m-6 p-6 rounded-md'>
-            <p>Quiz:{idx + 1} <span>{question}</span></p>
-            {/* <div className='text-start'>
-                
-               <input type='radio' id='react' name='javascript'></input>
-               <span className='ml-2' for='react'>{options[0]}</span><br></br>
-               <input type='radio'id='css' name='javascript'></input>
-               <span className='ml-2' for='css'>{options[1]}</span><br></br>
-               <input  type='radio' id='boot' name='javascript'></input>
-               <span className='ml-2' for='boot'>{options[2]}</span><br></br>
-               <input type='radio' id='router' name='javascript'></input>
-               <span className='ml-2' for='router'>{options[3]}</span><br></br>
+            <div className='flex justify-between'>
+            <p>Quiz:{idx + 1} </p>
+            <p>{question}</p>
+            <EyeIcon onClick={showAnswer} className="h-6 w-6  text-blue-500"/>
+            </div>
+            
+            <div className='bg-red-300'>
+                {
+                    answer && <h4>Correct Answer :{correctAnswer}</h4>
+                }
+            </div>
 
-                
-            </div> */}
             <div className='text-start'>
                 {
                     options.map(option => <div>
