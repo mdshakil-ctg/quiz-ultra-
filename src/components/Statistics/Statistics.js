@@ -6,9 +6,7 @@ import {
     Line,
     XAxis,
     YAxis,
-    CartesianGrid,
     Tooltip,
-    Legend
   } from "recharts";
 
   
@@ -17,7 +15,7 @@ const Charts = () => {
     const quizData = useLoaderData();
     const data = quizData.data;
     return (
-       <div className='bg-yellow-300 p-11'>
+       <div className='bg-yellow-300 p-11 mx-auto'>
             <LineChart width={500}  height={300} data={data}>
             <XAxis dataKey="name" />
             <YAxis />
