@@ -4,6 +4,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Main from './layout/Main';
 import Home from './components/Home/Home';
 import CartDetails from './components/CartDetails/CartDetails';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import Blogs from './components/Blogs/Blogs';
 
 function App() {
   const router = createBrowserRouter([
@@ -20,8 +22,16 @@ function App() {
           path:'/quiz/:cartId',
           loader: async({params}) => fetch(`https://openapi.programming-hero.com/api/quiz/${params.cartId}`),
           element: <CartDetails></CartDetails>
+        },
+        {
+          path:'/blogs',
+          element:<Blogs></Blogs>
         }
       ]
+    },
+    {
+      path:'/*',
+      element: <ErrorPage></ErrorPage>
     }
   ]);
   return (
